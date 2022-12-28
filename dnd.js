@@ -4,6 +4,7 @@ const initialMovingElementPageXY = {
   y: 0,
   set: (movingElement) => {
     const rect = movingElement.getBoundingClientRect();
+    console.log(rect)
     initialMovingElementPageXY.x = rect.x + window.scrollX;
     initialMovingElementPageXY.y = rect.y + window.scrollY;
   },
@@ -22,11 +23,9 @@ const shifts = {
 
 const moveAt = (element, pageX, pageY) => {
   // Moves element to pageX and pageY coordinates using fast CSS transform method
-  element.style.transform = `translate(${
-    pageX - initialMovingElementPageXY.x - shifts.shiftX
-  }px, ${
-    pageY - initialMovingElementPageXY.y - shifts.shiftY
-  }px) rotate(-3deg)`;
+  element.style.transform = `translate(${pageX - initialMovingElementPageXY.x - shifts.shiftX
+    }px, ${pageY - initialMovingElementPageXY.y - shifts.shiftY
+    }px) rotate(-3deg)`;
 };
 
 const getElementCoordinates = (node, searchCoordsBy) => {
